@@ -23,6 +23,7 @@ font pango:RobotoMono Nerd Font 11
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+exec --no-startup-id feh --recursive --bg-scale ./walls/wall.png
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -63,10 +64,6 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -102,13 +99,13 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
+bindsym $mod+l exec i3lock -i ./walls/wall.png
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -187,4 +184,26 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+		position top
+		workspace_min_width 36
+		tray_padding 4
+		colors {
+			background #141514
+				statusline #ef934d
+				separator #ef934d
+				focused_background #1e1f1e
+				focused_statusline #ef934d
+				focused_separator #ef934d
+				focused_workspace #ef934d #ef934d #141514
+				active_workspace #7ec97e #7ec97e #141514
+				inactive_workspace #3b403c #3b403c #f4decd
+				urgent_workspace #f16e65 #f16e65 #141514
+				binding_mode #71b4d6 #71b4d6 #141514
+		}
 }
+
+client.focused            #ef944d #141514 #f4decd #ef944d #ef944d
+client.focused_inactive   #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
+client.unfocused          #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
+client.urgent             #f16e65 #141514 #f4decd #f16e65 #f16e65
+client.placeholder        #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
